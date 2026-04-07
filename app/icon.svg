@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Mia Wellness Spa icon</title>
+  <desc id="desc">A soft neutral icon with the initials M and W for Mia Wellness Spa.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#fcfaf7" />
+      <stop offset="100%" stop-color="#dbe7d7" />
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="url(#bg)" />
+  <circle cx="64" cy="64" r="42" fill="#201b17" opacity="0.08" />
+  <text x="64" y="74" fill="#201b17" font-family="Georgia, 'Times New Roman', serif" font-size="42" text-anchor="middle">
+    MW
+  </text>
+</svg>
