@@ -16,6 +16,7 @@ function serializeDirective(name: string, values: string[]) {
 }
 
 export function buildContentSecurityPolicy() {
+  const isProduction = process.env.NODE_ENV === "production";
   const analyticsScriptOrigin = analyticsConfig.enabled ? getAnalyticsScriptOrigin() : null;
   const analyticsApiOrigin = analyticsConfig.enabled
     ? getAnalyticsApiOrigin() || analyticsScriptOrigin
@@ -30,6 +31,7 @@ export function buildContentSecurityPolicy() {
     "script-src": [
       "'self'",
       "'unsafe-inline'",
+      ...(!isProduction ? ["'unsafe-eval'"] : []),
       ...(analyticsScriptOrigin ? [analyticsScriptOrigin] : []),
     ],
     "style-src": ["'self'", "'unsafe-inline'"],
@@ -38,9 +40,7 @@ export function buildContentSecurityPolicy() {
     "connect-src": ["'self'", ...(analyticsApiOrigin ? [analyticsApiOrigin] : [])],
     "frame-src": [securityConfig.thirdPartyOrigins.calendlyFrame],
     "manifest-src": ["'self'"],
-    ...(process.env.NODE_ENV === "production"
-      ? { "upgrade-insecure-requests": [] as string[] }
-      : {}),
+    ...(isProduction ? { "upgrade-insecure-requests": [] as string[] } : {}),
   };
 
   return Object.entries(directives)
