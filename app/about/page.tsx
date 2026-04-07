@@ -80,9 +80,11 @@ export default function AboutPage() {
       <EditorialSplitSection
         aside={
           <PlaceholderVisual
-            caption="This editorial space is reserved for an approved founder portrait or calm lifestyle image without changing the layout."
-            eyebrow="Future founder image"
-            title="Reserved founder portrait"
+            caption="This temporary founder-style image keeps the story section visually grounded until final portrait photography is available."
+            eyebrow="Founder story"
+            imageAlt="Editorial illustration of folded towels, a bottle, and calm wellness objects arranged in warm neutral tones."
+            imageSrc="/images/mock/about-founder.svg"
+            title="Care shaped by presence and touch"
           />
         }
         eyebrow={siteConfig.about.founderStory.eyebrow}

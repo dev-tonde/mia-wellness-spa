@@ -29,9 +29,11 @@ export function IntroSection() {
             </div>
           </div>
           <PlaceholderVisual
-            caption="A soft editorial visual block is reserved here so approved imagery can be added later without changing the homepage layout."
-            eyebrow="Future imagery"
-            title="Reserved lifestyle imagery"
+            caption="This temporary editorial visual gives the section a calm, polished image treatment until final lifestyle photography is ready."
+            eyebrow="At-home comfort"
+            imageAlt="Editorial illustration of towels, tea, and soft botanical details arranged in a calm home setting."
+            imageSrc="/images/mock/home-intro.svg"
+            title="Comfort that already feels familiar"
           />
         </div>
       </Container>

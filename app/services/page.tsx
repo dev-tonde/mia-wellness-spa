@@ -49,9 +49,11 @@ export default function ServicesPage() {
             </div>
           </div>
           <PlaceholderVisual
-            caption="This reserved visual area can take approved treatment photography or a brand collage later while keeping the layout calm and polished today."
-            eyebrow="Future service imagery"
-            title="Reserved service imagery"
+            caption="A generated service collage adds warmth and scanability now while leaving an easy path for final treatment imagery later."
+            eyebrow="Treatment overview"
+            imageAlt="Editorial illustration of folded towels, hot stones, and treatment tools in a soft luxury palette."
+            imageSrc="/images/mock/services-overview.svg"
+            title="A calm range of treatments, brought home"
           />
         </div>
       </PageHero>

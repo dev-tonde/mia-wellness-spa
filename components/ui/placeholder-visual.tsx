@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useId } from "react";
 
 import { cn } from "@/lib/utils";
@@ -6,6 +7,9 @@ type PlaceholderVisualProps = {
   caption: string;
   className?: string;
   eyebrow?: string;
+  imageAlt?: string;
+  imagePriority?: boolean;
+  imageSrc?: string;
   title: string;
   variant?: "hero" | "section";
 };
@@ -14,6 +18,9 @@ export function PlaceholderVisual({
   caption,
   className,
   eyebrow = "Reserved visual",
+  imageAlt,
+  imagePriority = false,
+  imageSrc,
   title,
   variant = "section",
 }: PlaceholderVisualProps) {
@@ -21,6 +28,42 @@ export function PlaceholderVisual({
   const captionId = useId();
   const minHeightClassName =
     variant === "hero" ? "min-h-[26rem] sm:min-h-[29rem]" : "min-h-[22rem] sm:min-h-[24rem]";
+  const imageSizes =
+    variant === "hero"
+      ? "(min-width: 1280px) 42vw, (min-width: 1024px) 44vw, 100vw"
+      : "(min-width: 1280px) 38vw, (min-width: 1024px) 42vw, 100vw";
+
+  if (imageSrc) {
+    return (
+      <figure
+        className={cn(
+          "relative overflow-hidden rounded-[2rem] border border-white/60 bg-off-white shadow-soft",
+          minHeightClassName,
+          className,
+        )}
+      >
+        <Image
+          alt={imageAlt ?? title}
+          className="object-cover"
+          fill
+          priority={imagePriority}
+          sizes={imageSizes}
+          src={imageSrc}
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(252,250,247,0.04),rgba(32,27,23,0.06)_45%,rgba(32,27,23,0.68)_100%)]" />
+        <div className="absolute right-5 top-5 rounded-full border border-white/70 bg-white/78 px-3 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.26em] text-charcoal/62 backdrop-blur">
+          Brand mock image
+        </div>
+        <figcaption className="absolute inset-x-4 bottom-4 rounded-[1.7rem] border border-white/25 bg-charcoal/72 px-5 py-5 text-off-white shadow-lg backdrop-blur-md sm:inset-x-5 sm:bottom-5">
+          <p className="text-[0.65rem] font-semibold uppercase tracking-[0.32em] text-off-white/65">
+            {eyebrow}
+          </p>
+          <p className="mt-3 font-display text-2xl leading-tight text-off-white">{title}</p>
+          <p className="mt-3 max-w-md text-sm leading-6 text-off-white/76">{caption}</p>
+        </figcaption>
+      </figure>
+    );
+  }
 
   return (
     <div

@@ -13,9 +13,11 @@ export function AboutPreview() {
       <Container>
         <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <PlaceholderVisual
-            caption="This visual block holds the place of future lifestyle or treatment imagery while keeping the page polished today."
+            caption="A generated brand image helps the section feel intentional now, while still leaving room for future lifestyle photography."
             eyebrow="About the brand"
-            title="Future about imagery"
+            imageAlt="Editorial illustration of a calm home interior with soft light and wellness styling."
+            imageSrc="/images/mock/about-preview.svg"
+            title="A softer way to welcome care home"
           />
           <div>
             <SectionHeading

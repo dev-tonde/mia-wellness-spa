@@ -10,8 +10,7 @@ export const routeConfig = {
 
 export const bookingConfig = {
   providerName: "Calendly",
-  // TODO: Replace with the live Calendly booking URL when production booking is ready.
-  calendlyUrl: "https://calendly.com/replace-with-mia-wellness-spa",
+  calendlyUrl: "https://calendly.com/nomiamercy",
   fallbackPath: routeConfig.booking,
   confirmationPath: routeConfig.bookingThankYou,
   embedMinHeight: 780,

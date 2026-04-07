@@ -92,9 +92,11 @@ export default function BookingPage() {
                 </div>
               </div>
               <PlaceholderVisual
-                caption="This reserved visual area can later hold branded booking imagery, treatment setup photography, or a service-area graphic without changing the page structure."
-                eyebrow="Future booking image"
-                title="Reserved booking imagery"
+                caption="This temporary booking visual supports the page with a polished in-home setup scene while final brand photography is still pending."
+                eyebrow="Booking atmosphere"
+                imageAlt="Editorial illustration of a phone booking flow beside a prepared in-home treatment setup."
+                imageSrc="/images/mock/booking-setup.svg"
+                title="A simple, prepared house-call experience"
               />
             </div>
           </Container>

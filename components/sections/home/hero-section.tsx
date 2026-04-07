@@ -46,9 +46,12 @@ export function HeroSection() {
             </ul>
           </div>
           <PlaceholderVisual
-            caption="A calm visual block holds space for future brand photography while preserving a premium first impression on mobile and desktop."
-            eyebrow="Future hero image"
-            title="Reserved hero imagery"
+            caption="A launch-ready editorial mock image keeps the premium tone in place while final brand photography is still being prepared."
+            eyebrow="House-call calm"
+            imageAlt="Editorial illustration of a calm in-home massage setup with a treatment table, soft light, and warm natural tones."
+            imagePriority
+            imageSrc="/images/mock/home-hero.svg"
+            title="Warm, private wellness at home"
             variant="hero"
           />
         </div>
