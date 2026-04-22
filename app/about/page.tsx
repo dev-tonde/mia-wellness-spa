@@ -37,6 +37,8 @@ const mobileModelHighlights = [
 ] as const;
 
 export default function AboutPage() {
+  const founderVisual = siteConfig.imagery.aboutFounder;
+
   return (
     <>
       <PageHero
@@ -80,11 +82,13 @@ export default function AboutPage() {
       <EditorialSplitSection
         aside={
           <PlaceholderVisual
-            caption="This temporary founder-style image keeps the story section visually grounded until final portrait photography is available."
-            eyebrow="Founder story"
-            imageAlt="Editorial illustration of folded towels, a bottle, and calm wellness objects arranged in warm neutral tones."
-            imageSrc="/images/mock/about-founder.svg"
-            title="Care shaped by presence and touch"
+            caption={founderVisual.caption}
+            eyebrow={founderVisual.eyebrow}
+            imageAlt={founderVisual.alt}
+            imageBadge={founderVisual.badge}
+            imagePosition={founderVisual.position}
+            imageSrc={founderVisual.src}
+            title={founderVisual.title}
           />
         }
         eyebrow={siteConfig.about.founderStory.eyebrow}

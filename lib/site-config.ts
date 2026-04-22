@@ -12,6 +12,13 @@ export type ServiceItem = {
   description: string;
   duration?: string;
   focus: string;
+  image: {
+    alt: string;
+    objectPosition?: string;
+    sourceLabel: string;
+    sourcePage: string;
+    src: string;
+  };
   name: string;
   pricing?: string;
 };
@@ -61,6 +68,16 @@ export type ChecklistGroup = {
   title: string;
 };
 
+export type SiteVisual = {
+  alt: string;
+  badge: string;
+  caption: string;
+  eyebrow: string;
+  position?: string;
+  src: string;
+  title: string;
+};
+
 export const siteConfig = {
   business: {
     name: businessConfig.name,
@@ -100,6 +117,78 @@ export const siteConfig = {
     `Based in ${businessConfig.location}`,
     "By appointment",
   ],
+  imagery: {
+    homeHero: {
+      alt: "Mia Wellness Spa therapist standing beside a prepared treatment table on a balcony during a house-call massage setup.",
+      badge: "Real house-call setup",
+      caption:
+        "A mobile appointment begins with a prepared treatment space, fresh linens, and a calm professional arrival.",
+      eyebrow: "House-call calm",
+      position: "44% 36%",
+      src: "/images/photos/home-hero-house-call-real.jpg",
+      title: "Wellness set up in the comfort of home",
+    } satisfies SiteVisual,
+    homeIntro: {
+      alt: "Close-up of Mia Wellness Spa towels, massage products, and hot stone tools arranged on a prepared treatment table.",
+      badge: "Treatment details",
+      caption:
+        "Fresh linens, treatment tools, and a polished setup help the appointment feel calm, clean, and easy to welcome into your space.",
+      eyebrow: "At-home comfort",
+      position: "50% 48%",
+      src: "/images/photos/home-intro-details-real.jpg",
+      title: "Thoughtful details that make the experience feel personal",
+    } satisfies SiteVisual,
+    aboutPreview: {
+      alt: "Mia Wellness Spa therapist standing beside a treatment table outdoors before a house-call massage appointment.",
+      badge: "Meet Mia Wellness Spa",
+      caption:
+        "Mia Wellness Spa is built around warmth, trust, and the reassurance of welcoming skilled care into a familiar environment.",
+      eyebrow: "About the brand",
+      position: "50% 28%",
+      src: "/images/photos/about-preview-table-real.jpg",
+      title: "A calm professional presence from arrival",
+    } satisfies SiteVisual,
+    aboutFounder: {
+      alt: "Founder of Mia Wellness Spa standing beside a prepared massage table in a garden setting.",
+      badge: "Founder story",
+      caption:
+        "The brand is rooted in a personal approach to care, presence, and creating a calm experience from the very first hello.",
+      eyebrow: "Founder story",
+      position: "50% 24%",
+      src: "/images/photos/about-founder-portrait-real.jpg",
+      title: "The person behind Mia Wellness Spa",
+    } satisfies SiteVisual,
+    servicesOverview: {
+      alt: "Mia Wellness Spa therapist holding a hot stone set beside a prepared massage table.",
+      badge: "Treatment preparation",
+      caption:
+        "From hot stone sessions to restorative bodywork, the service arrives with the essentials needed for a professional in-home treatment.",
+      eyebrow: "Treatment overview",
+      position: "50% 22%",
+      src: "/images/photos/services-hot-stone-real.jpg",
+      title: "Treatments delivered with care and preparation",
+    } satisfies SiteVisual,
+    bookingSetup: {
+      alt: "Prepared massage table on a balcony with Mia Wellness Spa towels and treatment essentials ready for a house-call appointment.",
+      badge: "Ready for arrival",
+      caption:
+        "Before the treatment begins, the space is set with fresh linens and the essentials needed for a calm appointment at home.",
+      eyebrow: "Booking atmosphere",
+      position: "50% 42%",
+      src: "/images/photos/booking-setup-ready-real.jpg",
+      title: "A simple, prepared house-call experience",
+    } satisfies SiteVisual,
+    contactInquiry: {
+      alt: "Mia Wellness Spa therapist providing a treatment beside a private outdoor home setup.",
+      badge: "Real appointment",
+      caption:
+        "If you would like to ask a question first, the contact path stays personal, straightforward, and grounded in the real home-visit experience.",
+      eyebrow: "House-call reassurance",
+      position: "36% 50%",
+      src: "/images/photos/contact-treatment-in-progress-real.jpg",
+      title: "A respectful experience in your own space",
+    } satisfies SiteVisual,
+  },
   home: {
     hero: {
       eyebrow: `Mobile massage in ${businessConfig.serviceAreaSummary}`,
@@ -590,6 +679,13 @@ export const siteConfig = {
       description:
         "A soothing, flowing massage designed to encourage relaxation, gentle tension release, and an overall sense of calm in the comfort of your home.",
       focus: "Ideal for winding down and restoring calm.",
+      image: {
+        alt: "A therapist using smooth gliding strokes across a client's back during a Swedish massage.",
+        objectPosition: "50% 46%",
+        sourceLabel: "Kaboompics.com via Pexels",
+        sourcePage: "https://www.pexels.com/photo/a-woman-getting-a-back-massage-6629608/",
+        src: "/images/services/swedish-massage.jpg",
+      },
       bestFor: [
         "Clients who want a calming, full-body treatment",
         "Periods of everyday stress and general tension",
@@ -601,6 +697,13 @@ export const siteConfig = {
       description:
         "A more focused treatment style that supports active lifestyles by working into overused areas and everyday muscular tightness.",
       focus: "Well suited to movement-focused recovery and tension release.",
+      image: {
+        alt: "A therapist applying targeted sports massage work to a client's leg in a gym recovery setting.",
+        objectPosition: "50% 32%",
+        sourceLabel: "Jonathan Borba via Pexels",
+        sourcePage: "https://www.pexels.com/photo/a-woman-getting-a-massage-in-a-gym-27730475/",
+        src: "/images/services/sports-massage.jpg",
+      },
       bestFor: [
         "Active routines and exercise recovery support",
         "Repeated muscular tightness from training or movement",
@@ -612,6 +715,13 @@ export const siteConfig = {
       description:
         "A firmer-pressure massage intended for areas that feel especially tight, heavy, or resistant to lighter treatment styles.",
       focus: "Best for concentrated relief in tense or tight areas.",
+      image: {
+        alt: "A therapist using firm pressure along a client's lower back during a deep tissue massage session.",
+        objectPosition: "50% 52%",
+        sourceLabel: "KoolShooters via Pexels",
+        sourcePage: "https://www.pexels.com/photo/a-woman-having-a-massage-6628649/",
+        src: "/images/services/deep-tissue-massage.jpg",
+      },
       bestFor: [
         "Stubborn tension in areas like the back, shoulders, or legs",
         "Clients who prefer firmer pressure",
@@ -623,6 +733,13 @@ export const siteConfig = {
       description:
         "A focused foot-based treatment using pressure-point techniques to create a grounded, restorative, and deeply calming experience.",
       focus: "A calming option for clients who want restorative, focused care.",
+      image: {
+        alt: "A therapist holding and applying pressure to a client's foot during a reflexology session.",
+        objectPosition: "50% 56%",
+        sourceLabel: "Ron Lach via Pexels",
+        sourcePage: "https://www.pexels.com/photo/foot-massage-9146382/",
+        src: "/images/services/reflexology.jpg",
+      },
       bestFor: [
         "Clients who enjoy focused foot-based treatment",
         "A quieter, restorative wellness session",
@@ -634,6 +751,13 @@ export const siteConfig = {
       description:
         "A warming massage experience that combines smooth heated stones with hands-on treatment for softness, comfort, and a more deeply relaxing feel.",
       focus: "Great for clients seeking warmth, softness, and stress relief.",
+      image: {
+        alt: "A client resting with smooth heated stones placed during a hot stone massage treatment.",
+        objectPosition: "50% 38%",
+        sourceLabel: "Sergey Torbik via Pexels",
+        sourcePage: "https://www.pexels.com/photo/a-woman-having-a-hot-stone-massage-7365404/",
+        src: "/images/services/hot-stone-massage.jpg",
+      },
       bestFor: [
         "Clients who enjoy warmth during treatment",
         "A softer, deeply soothing massage experience",
@@ -645,6 +769,13 @@ export const siteConfig = {
       description:
         "A targeted session that combines massage with cupping techniques to work into areas of tension in a more focused way.",
       focus: "Useful when specific tension patterns need extra attention.",
+      image: {
+        alt: "A cupping massage session with glass cups placed on a client's back while a therapist prepares the treatment.",
+        objectPosition: "38% 48%",
+        sourceLabel: "RDNE Stock project via Pexels",
+        sourcePage: "https://www.pexels.com/photo/a-person-having-a-cupping-massage-8312822/",
+        src: "/images/services/cupping-massage.jpg",
+      },
       bestFor: [
         "Specific areas of tightness needing focused work",
         "Clients open to a combined massage and cupping approach",

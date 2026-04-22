@@ -8,6 +8,7 @@ import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
 import { InfoCard } from "@/components/ui/info-card";
 import { PageHero } from "@/components/ui/page-hero";
+import { PlaceholderVisual } from "@/components/ui/placeholder-visual";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { bookingIntent, contactIntent, getAnalyticsAttributes } from "@/lib/analytics";
 import { getBookingHref } from "@/lib/booking";
@@ -25,6 +26,7 @@ export const metadata: Metadata = pageMetadata({
 export default function ContactPage() {
   const hasLiveSocials = businessConfig.socials.some((social) => !isPlaceholderLink(social.href));
   const bookingHref = getBookingHref();
+  const contactVisual = siteConfig.imagery.contactInquiry;
 
   return (
     <>
@@ -174,6 +176,15 @@ export default function ContactPage() {
                 </div>
               </div>
               <div className="grid gap-4">
+                <PlaceholderVisual
+                  caption={contactVisual.caption}
+                  eyebrow={contactVisual.eyebrow}
+                  imageAlt={contactVisual.alt}
+                  imageBadge={contactVisual.badge}
+                  imagePosition={contactVisual.position}
+                  imageSrc={contactVisual.src}
+                  title={contactVisual.title}
+                />
                 {siteConfig.contactPage.inquiry.items.map((item) => (
                   <InfoCard description={item.description} key={item.title} title={item.title} />
                 ))}

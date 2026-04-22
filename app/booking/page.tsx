@@ -27,6 +27,7 @@ export const metadata: Metadata = pageMetadata({
 
 export default function BookingPage() {
   const bookingState = getBookingState();
+  const bookingVisual = siteConfig.imagery.bookingSetup;
   const heroPrimaryHref = bookingState.liveCalendly ? bookingState.primaryHref : "#booking-options";
   const heroPrimaryLabel = bookingState.liveCalendly
     ? siteConfig.bookingPage.hero.primaryCtaLabel
@@ -92,11 +93,13 @@ export default function BookingPage() {
                 </div>
               </div>
               <PlaceholderVisual
-                caption="This temporary booking visual supports the page with a polished in-home setup scene while final brand photography is still pending."
-                eyebrow="Booking atmosphere"
-                imageAlt="Editorial illustration of a phone booking flow beside a prepared in-home treatment setup."
-                imageSrc="/images/mock/booking-setup.svg"
-                title="A simple, prepared house-call experience"
+                caption={bookingVisual.caption}
+                eyebrow={bookingVisual.eyebrow}
+                imageAlt={bookingVisual.alt}
+                imageBadge={bookingVisual.badge}
+                imagePosition={bookingVisual.position}
+                imageSrc={bookingVisual.src}
+                title={bookingVisual.title}
               />
             </div>
           </Container>

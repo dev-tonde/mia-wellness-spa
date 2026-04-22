@@ -7,6 +7,7 @@ import { siteConfig } from "@/lib/site-config";
 
 export function HeroSection() {
   const bookingHref = getBookingHref();
+  const heroVisual = siteConfig.imagery.homeHero;
 
   return (
     <section className="relative overflow-hidden pt-10 sm:pt-14">
@@ -46,12 +47,14 @@ export function HeroSection() {
             </ul>
           </div>
           <PlaceholderVisual
-            caption="A launch-ready editorial mock image keeps the premium tone in place while final brand photography is still being prepared."
-            eyebrow="House-call calm"
-            imageAlt="Editorial illustration of a calm in-home massage setup with a treatment table, soft light, and warm natural tones."
+            caption={heroVisual.caption}
+            eyebrow={heroVisual.eyebrow}
+            imageAlt={heroVisual.alt}
+            imageBadge={heroVisual.badge}
+            imagePosition={heroVisual.position}
             imagePriority
-            imageSrc="/images/mock/home-hero.svg"
-            title="Warm, private wellness at home"
+            imageSrc={heroVisual.src}
+            title={heroVisual.title}
             variant="hero"
           />
         </div>

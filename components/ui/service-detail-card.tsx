@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { ButtonLink } from "@/components/ui/button-link";
 import { siteConfig } from "@/lib/site-config";
 import type { ServiceItem } from "@/lib/site-config";
@@ -17,6 +19,24 @@ export function ServiceDetailCard({ bookingHref, service }: ServiceDetailCardPro
       aria-labelledby={headingId}
       className="rounded-[1.85rem] border border-white/70 bg-off-white/74 p-6 shadow-soft transition duration-300 hover:-translate-y-0.5 hover:bg-off-white sm:p-7"
     >
+      <div className="relative mb-6 overflow-hidden rounded-[1.55rem] border border-white/70 bg-sand-100 shadow-sm">
+        <div className="relative aspect-[4/3]">
+          <Image
+            alt={service.image.alt}
+            className="object-cover"
+            fill
+            sizes="(min-width: 1280px) 28vw, (min-width: 768px) 42vw, 100vw"
+            src={service.image.src}
+            style={
+              service.image.objectPosition
+                ? { objectPosition: service.image.objectPosition }
+                : undefined
+            }
+            unoptimized
+          />
+        </div>
+      </div>
+
       <div className="flex items-start justify-between gap-4">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sage-800/78">

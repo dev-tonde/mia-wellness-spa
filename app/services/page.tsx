@@ -21,6 +21,8 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default function ServicesPage() {
+  const servicesVisual = siteConfig.imagery.servicesOverview;
+
   return (
     <>
       <PageHero
@@ -49,11 +51,13 @@ export default function ServicesPage() {
             </div>
           </div>
           <PlaceholderVisual
-            caption="A generated service collage adds warmth and scanability now while leaving an easy path for final treatment imagery later."
-            eyebrow="Treatment overview"
-            imageAlt="Editorial illustration of folded towels, hot stones, and treatment tools in a soft luxury palette."
-            imageSrc="/images/mock/services-overview.svg"
-            title="A calm range of treatments, brought home"
+            caption={servicesVisual.caption}
+            eyebrow={servicesVisual.eyebrow}
+            imageAlt={servicesVisual.alt}
+            imageBadge={servicesVisual.badge}
+            imagePosition={servicesVisual.position}
+            imageSrc={servicesVisual.src}
+            title={servicesVisual.title}
           />
         </div>
       </PageHero>

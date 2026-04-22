@@ -7,6 +7,7 @@ import { siteConfig } from "@/lib/site-config";
 
 export function IntroSection() {
   const bookingHref = getBookingHref();
+  const introVisual = siteConfig.imagery.homeIntro;
 
   return (
     <section className="py-16 sm:py-20">
@@ -29,11 +30,13 @@ export function IntroSection() {
             </div>
           </div>
           <PlaceholderVisual
-            caption="This temporary editorial visual gives the section a calm, polished image treatment until final lifestyle photography is ready."
-            eyebrow="At-home comfort"
-            imageAlt="Editorial illustration of towels, tea, and soft botanical details arranged in a calm home setting."
-            imageSrc="/images/mock/home-intro.svg"
-            title="Comfort that already feels familiar"
+            caption={introVisual.caption}
+            eyebrow={introVisual.eyebrow}
+            imageAlt={introVisual.alt}
+            imageBadge={introVisual.badge}
+            imagePosition={introVisual.position}
+            imageSrc={introVisual.src}
+            title={introVisual.title}
           />
         </div>
       </Container>

@@ -7,17 +7,20 @@ import { siteConfig } from "@/lib/site-config";
 
 export function AboutPreview() {
   const bookingHref = getBookingHref();
+  const aboutPreviewVisual = siteConfig.imagery.aboutPreview;
 
   return (
     <section className="py-16 sm:py-20">
       <Container>
         <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <PlaceholderVisual
-            caption="A generated brand image helps the section feel intentional now, while still leaving room for future lifestyle photography."
-            eyebrow="About the brand"
-            imageAlt="Editorial illustration of a calm home interior with soft light and wellness styling."
-            imageSrc="/images/mock/about-preview.svg"
-            title="A softer way to welcome care home"
+            caption={aboutPreviewVisual.caption}
+            eyebrow={aboutPreviewVisual.eyebrow}
+            imageAlt={aboutPreviewVisual.alt}
+            imageBadge={aboutPreviewVisual.badge}
+            imagePosition={aboutPreviewVisual.position}
+            imageSrc={aboutPreviewVisual.src}
+            title={aboutPreviewVisual.title}
           />
           <div>
             <SectionHeading
