@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 
 import { bookingConfig, businessConfig, primaryNavigation, routeConfig } from "@/lib/business-config";
 
+const clientPhotographySourceLabel = "Mia Wellness Spa client-provided photography";
+const clientPhotographySourcePage = businessConfig.baseUrl;
+
 export type NavItem = {
   href: string;
   label: string;
@@ -159,14 +162,14 @@ export const siteConfig = {
       title: "The person behind Mia Wellness Spa",
     } satisfies SiteVisual,
     servicesOverview: {
-      alt: "Mia Wellness Spa therapist holding a hot stone set beside a prepared massage table.",
-      badge: "Treatment preparation",
+      alt: "A client resting with heated stones placed along the back during a Mia Wellness Spa hot stone treatment.",
+      badge: "Hot stone treatment",
       caption:
-        "From hot stone sessions to restorative bodywork, the service arrives with the essentials needed for a professional in-home treatment.",
-      eyebrow: "Treatment overview",
-      position: "50% 22%",
+        "The treatments page now reflects Mia Wellness Spa's own photography, showing the calm, in-home atmosphere of a real hot stone session.",
+      eyebrow: "Treatment atmosphere",
+      position: "50% 48%",
       src: "/images/photos/services-hot-stone-real.jpg",
-      title: "Treatments delivered with care and preparation",
+      title: "Warmth, care, and bodywork brought into your own space",
     } satisfies SiteVisual,
     bookingSetup: {
       alt: "Prepared massage table on a balcony with Mia Wellness Spa towels and treatment essentials ready for a house-call appointment.",
@@ -680,10 +683,10 @@ export const siteConfig = {
         "A soothing, flowing massage designed to encourage relaxation, gentle tension release, and an overall sense of calm in the comfort of your home.",
       focus: "Ideal for winding down and restoring calm.",
       image: {
-        alt: "A therapist using smooth gliding strokes across a client's back during a Swedish massage.",
-        objectPosition: "50% 46%",
-        sourceLabel: "Kaboompics.com via Pexels",
-        sourcePage: "https://www.pexels.com/photo/a-woman-getting-a-back-massage-6629608/",
+        alt: "A Mia Wellness Spa therapist using calm, gliding pressure across a client's back during an in-home Swedish massage.",
+        objectPosition: "50% 52%",
+        sourceLabel: clientPhotographySourceLabel,
+        sourcePage: clientPhotographySourcePage,
         src: "/images/services/swedish-massage.jpg",
       },
       bestFor: [
@@ -698,10 +701,10 @@ export const siteConfig = {
         "A more focused treatment style that supports active lifestyles by working into overused areas and everyday muscular tightness.",
       focus: "Well suited to movement-focused recovery and tension release.",
       image: {
-        alt: "A therapist applying targeted sports massage work to a client's leg in a gym recovery setting.",
-        objectPosition: "50% 32%",
-        sourceLabel: "Jonathan Borba via Pexels",
-        sourcePage: "https://www.pexels.com/photo/a-woman-getting-a-massage-in-a-gym-27730475/",
+        alt: "A Mia Wellness Spa therapist applying targeted pressure around a client's calf and knee during an in-home sports massage.",
+        objectPosition: "52% 54%",
+        sourceLabel: clientPhotographySourceLabel,
+        sourcePage: clientPhotographySourcePage,
         src: "/images/services/sports-massage.jpg",
       },
       bestFor: [
@@ -716,10 +719,10 @@ export const siteConfig = {
         "A firmer-pressure massage intended for areas that feel especially tight, heavy, or resistant to lighter treatment styles.",
       focus: "Best for concentrated relief in tense or tight areas.",
       image: {
-        alt: "A therapist using firm pressure along a client's lower back during a deep tissue massage session.",
-        objectPosition: "50% 52%",
-        sourceLabel: "KoolShooters via Pexels",
-        sourcePage: "https://www.pexels.com/photo/a-woman-having-a-massage-6628649/",
+        alt: "A Mia Wellness Spa therapist using deeper forearm and hand pressure across a client's upper back during a deep tissue massage.",
+        objectPosition: "62% 46%",
+        sourceLabel: clientPhotographySourceLabel,
+        sourcePage: clientPhotographySourcePage,
         src: "/images/services/deep-tissue-massage.jpg",
       },
       bestFor: [
@@ -734,10 +737,10 @@ export const siteConfig = {
         "A focused foot-based treatment using pressure-point techniques to create a grounded, restorative, and deeply calming experience.",
       focus: "A calming option for clients who want restorative, focused care.",
       image: {
-        alt: "A therapist holding and applying pressure to a client's foot during a reflexology session.",
-        objectPosition: "50% 56%",
-        sourceLabel: "Ron Lach via Pexels",
-        sourcePage: "https://www.pexels.com/photo/foot-massage-9146382/",
+        alt: "A Mia Wellness Spa therapist applying focused thumb pressure to a client's foot during an in-home reflexology treatment.",
+        objectPosition: "48% 52%",
+        sourceLabel: clientPhotographySourceLabel,
+        sourcePage: clientPhotographySourcePage,
         src: "/images/services/reflexology.jpg",
       },
       bestFor: [
@@ -752,10 +755,10 @@ export const siteConfig = {
         "A warming massage experience that combines smooth heated stones with hands-on treatment for softness, comfort, and a more deeply relaxing feel.",
       focus: "Great for clients seeking warmth, softness, and stress relief.",
       image: {
-        alt: "A client resting with smooth heated stones placed during a hot stone massage treatment.",
-        objectPosition: "50% 38%",
-        sourceLabel: "Sergey Torbik via Pexels",
-        sourcePage: "https://www.pexels.com/photo/a-woman-having-a-hot-stone-massage-7365404/",
+        alt: "A client resting with heated stones placed along the back during a Mia Wellness Spa hot stone massage at home.",
+        objectPosition: "54% 44%",
+        sourceLabel: clientPhotographySourceLabel,
+        sourcePage: clientPhotographySourcePage,
         src: "/images/services/hot-stone-massage.jpg",
       },
       bestFor: [

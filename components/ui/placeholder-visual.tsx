@@ -30,7 +30,6 @@ export function PlaceholderVisual({
 }: PlaceholderVisualProps) {
   const titleId = useId();
   const captionId = useId();
-  const shouldServeDirectPhotoAsset = imageSrc?.startsWith("/images/photos/") ?? false;
   const minHeightClassName =
     variant === "hero" ? "min-h-[26rem] sm:min-h-[29rem]" : "min-h-[22rem] sm:min-h-[24rem]";
   const imageSizes =
@@ -52,10 +51,10 @@ export function PlaceholderVisual({
           className="object-cover"
           fill
           priority={imagePriority}
+          quality={86}
           sizes={imageSizes}
           style={imagePosition ? { objectPosition: imagePosition } : undefined}
           src={imageSrc}
-          unoptimized={shouldServeDirectPhotoAsset}
         />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(252,250,247,0.04),rgba(32,27,23,0.06)_45%,rgba(32,27,23,0.68)_100%)]" />
         <div className="absolute right-5 top-5 rounded-full border border-white/70 bg-white/78 px-3 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.26em] text-charcoal/62 backdrop-blur">

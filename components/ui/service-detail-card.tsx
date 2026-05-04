@@ -25,6 +25,7 @@ export function ServiceDetailCard({ bookingHref, service }: ServiceDetailCardPro
             alt={service.image.alt}
             className="object-cover"
             fill
+            quality={86}
             sizes="(min-width: 1280px) 28vw, (min-width: 768px) 42vw, 100vw"
             src={service.image.src}
             style={
@@ -32,7 +33,6 @@ export function ServiceDetailCard({ bookingHref, service }: ServiceDetailCardPro
                 ? { objectPosition: service.image.objectPosition }
                 : undefined
             }
-            unoptimized
           />
         </div>
       </div>
