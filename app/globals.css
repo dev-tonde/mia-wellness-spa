@@ -56,4 +56,31 @@
   .skip-link {
     @apply absolute left-4 top-4 z-50 rounded-full bg-charcoal px-4 py-2 text-sm font-medium text-off-white transition focus:not-sr-only focus:absolute;
   }
+
+  .testimonial-marquee-track {
+    animation: testimonial-marquee 48s linear infinite;
+    will-change: transform;
+  }
+
+  .testimonial-marquee-track:hover,
+  .testimonial-marquee-track:focus-within {
+    animation-play-state: paused;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonial-marquee-track {
+    animation: none;
+    transform: none;
+  }
+}
+
+@keyframes testimonial-marquee {
+  from {
+    transform: translateX(-50%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
 }

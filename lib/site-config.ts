@@ -81,6 +81,13 @@ export type SiteVisual = {
   title: string;
 };
 
+export type ApprovedTestimonial = {
+  comment: string;
+  firstName: string;
+  lastName: string;
+  rating: 1 | 2 | 3 | 4 | 5;
+};
+
 export const siteConfig = {
   business: {
     name: businessConfig.name,
@@ -89,6 +96,8 @@ export const siteConfig = {
     phoneDisplay: businessConfig.phoneNumber,
     phoneHref: businessConfig.phoneHref,
     whatsappHref: businessConfig.whatsappHref,
+    emailAddress: businessConfig.emailAddress,
+    emailHref: businessConfig.emailHref,
     location: businessConfig.location,
     serviceAreaSummary: businessConfig.serviceAreaSummary,
     serviceModel: businessConfig.serviceModel,
@@ -113,6 +122,7 @@ export const siteConfig = {
     // TODO: Add approved social profile URLs once they are ready for publication.
     instagram: businessConfig.socials[0].href,
     facebook: businessConfig.socials[1].href,
+    googleReviewsPage: businessConfig.googleReviewUrl,
   },
   navigation: primaryNavigation satisfies readonly NavItem[],
   trustHighlights: [
@@ -199,7 +209,8 @@ export const siteConfig = {
       description:
         `${businessConfig.name} offers professional mobile massage treatments in ${businessConfig.serviceAreaSummary}, giving you the comfort of a personalised wellness experience without leaving your home.`,
       primaryCtaLabel: "Book Your Appointment",
-      secondaryCtaLabel: "View Our Treatments",
+      secondaryCtaLabel: "Chat on WhatsApp",
+      tertiaryCtaLabel: "View Our Treatments",
     },
     intro: {
       eyebrow: "A more personal way to experience wellness",
@@ -210,27 +221,36 @@ export const siteConfig = {
         "That house-call model makes wellness feel more personal. Each appointment is shaped around your comfort, preferred pressure, and treatment goals, with a warm, respectful approach that keeps the experience both premium and approachable.",
     },
     testimonials: {
-      eyebrow: "Client feedback",
-      title: "Approved client feedback will be added here when it is ready to publish",
+      eyebrow: "Testimonials",
+      title: "Approved client feedback and a clear way to share your experience",
       description:
-        "This section stays live so approved client reviews can be added later without redesigning the homepage. Until then, Mia Wellness Spa intentionally avoids publishing invented quotes, names, or star ratings.",
-      cards: [
-        {
-          title: "No invented testimonials",
-          description:
-            "The site does not use sample quotes or placeholder names just to simulate trust.",
-        },
-        {
-          title: "Approval comes first",
-          description:
-            "Real client feedback can be added here once wording and permission are ready.",
-        },
-        {
-          title: "Layout already prepared",
-          description:
-            "This section is designed to accept future testimonials cleanly without changing the page structure.",
-        },
-      ],
+        "This section is designed for approved testimonials only. If you would like to share your experience after an appointment, you can send it directly to Mia Wellness Spa for review below.",
+      publishedEyebrow: "What Clients Are Saying",
+      publishedTitle: "Approved testimonials are shown here once clients choose to share them publicly",
+      publishedDescription:
+        "Nothing in this area is auto-published. Testimonials appear only after review and client approval, keeping the site polished and truthful.",
+      publishedEmptyTitle: "Approved client testimonials will appear here once they are ready to publish",
+      publishedEmptyDescription:
+        "The testimonial layout is ready, but Mia Wellness Spa does not publish sample names, placeholder stars, or invented quotes just to make the page look busy.",
+      publishedEmptyNote:
+        "When real testimonials are approved, they will appear here with the client's name, star rating, and message in the same calm, premium presentation.",
+      submissionEyebrow: "Share Your Experience",
+      submissionTitle: "Send your experience for review after your appointment",
+      submissionDescription:
+        "Enter your first and last name, choose a star rating, and add a short comment. The form prepares a real testimonial submission that you can send directly on WhatsApp or by email.",
+      submissionNote:
+        "Submissions are reviewed before anything appears publicly on the website. The site does not use a database-backed public review system at the moment.",
+      formReadyHint:
+        "Your testimonial submission is ready to send. Choose WhatsApp for a quick mobile-friendly handoff or email if you prefer a written record.",
+      formPendingHint:
+        "Complete your first name, last name, star rating, and comment to unlock the submission actions.",
+      ratingPrompt: "Rate your experience",
+      whatsappCtaLabel: "Send on WhatsApp",
+      emailCtaLabel: "Send by email",
+      actionsHelper:
+        "These actions open WhatsApp or email with your testimonial already prepared, ready for Mia Wellness Spa to review before featuring it publicly.",
+      googleReviewCtaLabel: "Read or Leave Reviews on Google",
+      published: [] as ApprovedTestimonial[],
     },
     finalCta: {
       title: "Bring wellness home with a calm, professional booking experience",

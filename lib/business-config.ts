@@ -10,7 +10,7 @@ export const routeConfig = {
 
 export const bookingConfig = {
   providerName: "Calendly",
-  calendlyUrl: "https://calendly.com/nomiamercy",
+  calendlyUrl: "https://calendly.com/miawellnesspa/new-meeting",
   fallbackPath: routeConfig.booking,
   confirmationPath: routeConfig.bookingThankYou,
   embedMinHeight: 780,
@@ -21,6 +21,9 @@ export const businessConfig = {
   phoneNumber: "+27 65 847 3176",
   phoneHref: "tel:+27658473176",
   whatsappHref: "https://wa.me/27658473176",
+  emailAddress: "miawellnesspa@gmail.com",
+  emailHref: "mailto:miawellnesspa@gmail.com",
+  googleReviewUrl: "https://g.page/r/CXEHiGMzqlBhEAI/review",
   serviceAreaSummary: "Fourways and surrounding areas",
   location: "Fourways, Johannesburg",
   domain: "miawellness.co.za",

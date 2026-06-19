@@ -6,7 +6,7 @@ import { FirstTimeBookingSection } from "@/components/sections/first-time-bookin
 import { HouseCallSetupSection } from "@/components/sections/house-call-setup-section";
 import { HeroSection } from "@/components/sections/home/hero-section";
 import { IntroSection } from "@/components/sections/home/intro-section";
-import { TestimonialsPlaceholderSection } from "@/components/sections/home/testimonials-placeholder-section";
+import { HomeTestimonialsSection } from "@/components/sections/home/home-testimonials-section";
 import { HowItWorks } from "@/components/sections/how-it-works";
 import { ServiceAreasSection } from "@/components/sections/service-areas-section";
 import { ServicesGrid } from "@/components/sections/services-grid";
@@ -32,12 +32,12 @@ export default function HomePage() {
       <ServiceAreasSection />
       <HouseCallSetupSection />
       <AboutPreview />
-      <TestimonialsPlaceholderSection />
       <FirstTimeBookingSection />
       <CtaBand
         description={siteConfig.home.finalCta.description}
         title={siteConfig.home.finalCta.title}
       />
+      <HomeTestimonialsSection />
     </>
   );
 }
