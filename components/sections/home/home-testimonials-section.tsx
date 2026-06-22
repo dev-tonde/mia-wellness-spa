@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useId, useMemo, useState } from "react";
 
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
@@ -68,6 +68,7 @@ function StarIcon({ filled }: { filled: boolean }) {
 }
 
 type TestimonialCardProps = {
+  ariaHidden?: boolean;
   className?: string;
   comment: string;
   firstName: string;
@@ -76,6 +77,7 @@ type TestimonialCardProps = {
 };
 
 function TestimonialCard({
+  ariaHidden = false,
   className,
   comment,
   firstName,
@@ -84,6 +86,7 @@ function TestimonialCard({
 }: TestimonialCardProps) {
   return (
     <article
+      aria-hidden={ariaHidden || undefined}
       className={cn(
         "min-w-[18rem] max-w-sm rounded-[1.75rem] border border-charcoal/8 bg-white/92 p-5 shadow-soft sm:min-w-[22rem] sm:p-6",
         className,
@@ -108,11 +111,24 @@ function TestimonialCard({
 }
 
 export function HomeTestimonialsSection() {
+  const baseId = useId();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [rating, setRating] = useState<number>(0);
   const [comment, setComment] = useState("");
   const testimonialConfig = siteConfig.home.testimonials;
+  const sectionHeadingId = `${baseId}-section-heading`;
+  const sectionDescriptionId = `${baseId}-section-description`;
+  const publicReviewHeadingId = `${baseId}-public-review-heading`;
+  const publicReviewNoteId = `${baseId}-public-review-note`;
+  const publishedTestimonialsHeadingId = `${baseId}-published-testimonials-heading`;
+  const submissionHeadingId = `${baseId}-submission-heading`;
+  const submissionDescriptionId = `${baseId}-submission-description`;
+  const submissionNoteId = `${baseId}-submission-note`;
+  const formRequirementsId = `${baseId}-form-requirements`;
+  const ratingStatusId = `${baseId}-rating-status`;
+  const formStatusId = `${baseId}-form-status`;
+  const actionsHelperId = `${baseId}-actions-helper`;
   const approvedTestimonials = testimonialConfig.published;
   const hasAnimatedTrack = approvedTestimonials.length >= 3;
   const hasGoogleReviewLink = !isPlaceholderLink(siteConfig.links.googleReviewsPage);
@@ -148,31 +164,46 @@ export function HomeTestimonialsSection() {
   const emailSubmissionHref = isReady ? buildEmailSubmissionHref(testimonialMessage) : "#";
   const pendingFieldsMessage =
     missingFields.length > 0 ? `Still needed: ${missingFields.join(", ")}.` : "";
+  const fieldClasses =
+    "mt-2 w-full rounded-2xl border border-charcoal/14 bg-off-white/94 px-4 py-3 text-sm text-charcoal outline-none transition placeholder:text-charcoal/50 focus:border-sage-800 focus:ring-4 focus:ring-sage-700/25";
 
   return (
-    <section className="py-16 sm:py-20">
+    <section
+      aria-describedby={sectionDescriptionId}
+      aria-labelledby={sectionHeadingId}
+      className="py-16 sm:py-20"
+    >
       <Container>
         <SectionHeading
           align="center"
           description={testimonialConfig.description}
+          descriptionId={sectionDescriptionId}
           eyebrow={testimonialConfig.eyebrow}
+          id={sectionHeadingId}
           title={testimonialConfig.title}
         />
 
         <div className="mt-10 grid gap-6 xl:grid-cols-[minmax(0,1.32fr)_minmax(18rem,0.78fr)] xl:items-start">
           <article className="overflow-hidden rounded-[2.25rem] border border-charcoal/6 bg-off-white/88 p-6 shadow-soft sm:p-8 lg:p-10">
             <div className="max-w-2xl">
-              <div className="rounded-[2rem] bg-charcoal px-6 py-7 text-off-white shadow-soft sm:px-8 sm:py-8 lg:px-10 lg:py-10">
-                <p className="text-xs font-semibold uppercase tracking-[0.32em] text-off-white/70">
+              <section
+                aria-describedby={publicReviewNoteId}
+                aria-labelledby={publicReviewHeadingId}
+                className="rounded-[2rem] bg-charcoal px-6 py-7 text-off-white shadow-soft sm:px-8 sm:py-8 lg:px-10 lg:py-10"
+              >
+                <p className="text-xs font-semibold uppercase tracking-[0.32em] text-off-white/78">
                   {testimonialConfig.publicReviewEyebrow}
                 </p>
-                <h3 className="mt-5 max-w-3xl font-display text-4xl leading-tight sm:text-5xl">
+                <h3
+                  className="mt-5 max-w-3xl font-display text-4xl leading-tight sm:text-5xl"
+                  id={publicReviewHeadingId}
+                >
                   {testimonialConfig.publicReviewTitle}
                 </h3>
-                <p className="mt-5 max-w-2xl text-base leading-8 text-off-white/78 sm:text-lg">
+                <p className="mt-5 max-w-2xl text-base leading-8 text-off-white/84 sm:text-lg">
                   {testimonialConfig.publicReviewDescription}
                 </p>
-                <p className="mt-4 max-w-2xl text-sm leading-7 text-off-white/60">
+                <p className="mt-4 max-w-2xl text-sm leading-7 text-off-white/74" id={publicReviewNoteId}>
                   {hasGoogleReviewLink
                     ? testimonialConfig.publicReviewNote
                     : testimonialConfig.publicReviewUnavailableNote}
@@ -181,7 +212,8 @@ export function HomeTestimonialsSection() {
                 {hasGoogleReviewLink ? (
                   <div className="mt-7">
                     <ButtonLink
-                      className="w-full bg-off-white px-7 py-4 text-base font-semibold text-charcoal hover:bg-off-white/92 sm:w-auto"
+                      ariaDescribedBy={publicReviewNoteId}
+                      className="w-full bg-off-white px-7 py-4 text-base font-semibold text-charcoal hover:bg-off-white/92 focus-visible:ring-off-white focus-visible:ring-offset-charcoal sm:w-auto"
                       href={siteConfig.links.googleReviewsPage}
                       variant="primary"
                     >
@@ -189,23 +221,26 @@ export function HomeTestimonialsSection() {
                     </ButtonLink>
                   </div>
                 ) : null}
-              </div>
+              </section>
 
-              <div className="mt-10">
-                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sage-800/72">
+              <section className="mt-10" aria-labelledby={publishedTestimonialsHeadingId}>
+                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sage-800/84">
                   {testimonialConfig.publishedEyebrow}
                 </p>
-                <h3 className="mt-4 font-display text-2xl leading-tight text-charcoal sm:text-3xl">
+                <h3
+                  className="mt-4 font-display text-2xl leading-tight text-charcoal sm:text-3xl"
+                  id={publishedTestimonialsHeadingId}
+                >
                   {approvedTestimonials.length > 0
                     ? testimonialConfig.publishedTitle
                     : testimonialConfig.publishedEmptyTitle}
                 </h3>
-                <p className="mt-4 max-w-3xl text-sm leading-7 text-charcoal/70">
+                <p className="mt-4 max-w-3xl text-sm leading-7 text-charcoal/82">
                   {approvedTestimonials.length > 0
                     ? testimonialConfig.publishedDescription
                     : testimonialConfig.publishedEmptyDescription}
                 </p>
-              </div>
+              </section>
             </div>
 
             {approvedTestimonials.length > 0 ? (
@@ -228,11 +263,13 @@ export function HomeTestimonialsSection() {
                       <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-14 bg-gradient-to-r from-off-white/94 to-transparent" />
                       <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-14 bg-gradient-to-l from-off-white/94 to-transparent" />
                       <div
+                        aria-label="Approved website testimonials"
                         className="testimonial-marquee-track flex w-max gap-4 pr-4"
                         style={{ animationDuration }}
                       >
                         {animatedTestimonials.map((testimonial, index) => (
                           <TestimonialCard
+                            ariaHidden={index >= approvedTestimonials.length}
                             comment={testimonial.comment}
                             firstName={testimonial.firstName}
                             key={`${testimonial.firstName}-${testimonial.lastName}-${index}`}
@@ -265,35 +302,51 @@ export function HomeTestimonialsSection() {
               </div>
             ) : (
               <div className="mt-8 rounded-[1.75rem] border border-dashed border-charcoal/12 bg-white/84 p-6">
-                <p className="text-sm leading-7 text-charcoal/72">
+                <p className="text-sm leading-7 text-charcoal/82">
                   {testimonialConfig.publishedEmptyNote}
                 </p>
               </div>
             )}
           </article>
 
-          <article className="rounded-[1.85rem] border border-charcoal/8 bg-white/74 p-5 shadow-soft sm:p-6 xl:mt-12 xl:max-w-[34rem] xl:justify-self-end">
+          <article
+            aria-describedby={`${submissionDescriptionId} ${submissionNoteId} ${formRequirementsId}`}
+            aria-labelledby={submissionHeadingId}
+            className="rounded-[1.85rem] border border-charcoal/10 bg-white/78 p-5 shadow-soft sm:p-6 xl:mt-12 xl:max-w-[34rem] xl:justify-self-end"
+          >
             <div className="max-w-xl">
-              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sage-800/68">
+              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sage-800/80">
                 {testimonialConfig.submissionEyebrow}
               </p>
-              <h3 className="mt-3 font-display text-2xl leading-tight text-charcoal sm:text-[2rem]">
+              <h3
+                className="mt-3 font-display text-2xl leading-tight text-charcoal sm:text-[2rem]"
+                id={submissionHeadingId}
+              >
                 {testimonialConfig.submissionTitle}
               </h3>
-              <p className="mt-3 text-sm leading-7 text-charcoal/68">
+              <p className="mt-3 text-sm leading-7 text-charcoal/80" id={submissionDescriptionId}>
                 {testimonialConfig.submissionDescription}
               </p>
-              <div className="mt-4 rounded-[1.5rem] border border-sage-700/10 bg-sage-50/60 p-4">
-                <p className="text-sm leading-7 text-charcoal/60">{testimonialConfig.submissionNote}</p>
+              <div className="mt-4 rounded-[1.5rem] border border-sage-700/16 bg-sage-50/72 p-4">
+                <p className="text-sm leading-7 text-charcoal/76" id={submissionNoteId}>
+                  {testimonialConfig.submissionNote}
+                </p>
               </div>
+              <p className="mt-4 text-sm font-medium text-charcoal/84" id={formRequirementsId}>
+                All fields are required for website feature consideration.
+              </p>
             </div>
 
             <div className="mt-7 grid gap-4 sm:grid-cols-2">
               <label className="block">
-                <span className="text-sm font-medium text-charcoal">First name</span>
+                <span className="text-sm font-medium text-charcoal">
+                  First name <span aria-hidden="true" className="text-sage-800">*</span>
+                  <span className="sr-only"> required</span>
+                </span>
                 <input
                   autoComplete="given-name"
-                  className="mt-2 w-full rounded-2xl border border-charcoal/10 bg-off-white/82 px-4 py-3 text-sm text-charcoal outline-none transition focus:border-sage-700 focus:ring-2 focus:ring-sage-700/20"
+                  aria-describedby={formRequirementsId}
+                  className={fieldClasses}
                   maxLength={80}
                   onChange={(event) => setFirstName(event.target.value)}
                   placeholder="First name"
@@ -303,10 +356,14 @@ export function HomeTestimonialsSection() {
                 />
               </label>
               <label className="block">
-                <span className="text-sm font-medium text-charcoal">Last name</span>
+                <span className="text-sm font-medium text-charcoal">
+                  Last name <span aria-hidden="true" className="text-sage-800">*</span>
+                  <span className="sr-only"> required</span>
+                </span>
                 <input
                   autoComplete="family-name"
-                  className="mt-2 w-full rounded-2xl border border-charcoal/10 bg-off-white/82 px-4 py-3 text-sm text-charcoal outline-none transition focus:border-sage-700 focus:ring-2 focus:ring-sage-700/20"
+                  aria-describedby={formRequirementsId}
+                  className={fieldClasses}
                   maxLength={80}
                   onChange={(event) => setLastName(event.target.value)}
                   placeholder="Last name"
@@ -317,9 +374,10 @@ export function HomeTestimonialsSection() {
               </label>
             </div>
 
-            <fieldset className="mt-6">
+            <fieldset aria-describedby={`${formRequirementsId} ${ratingStatusId}`} className="mt-6">
               <legend className="text-sm font-medium text-charcoal">
-                {testimonialConfig.ratingPrompt}
+                {testimonialConfig.ratingPrompt} <span aria-hidden="true" className="text-sage-800">*</span>
+                <span className="sr-only"> required</span>
               </legend>
               <div className="mt-3 flex flex-wrap gap-2">
                 {ratingValues.map((value) => {
@@ -328,14 +386,15 @@ export function HomeTestimonialsSection() {
                   return (
                     <label
                       className={cn(
-                        "inline-flex cursor-pointer items-center justify-center rounded-full border px-3 py-2 transition focus-within:ring-2 focus-within:ring-sage-700/20",
+                        "inline-flex min-h-11 min-w-[4.75rem] cursor-pointer items-center justify-center rounded-full border px-3 py-2 transition focus-within:ring-4 focus-within:ring-sage-700/25",
                         active
-                          ? "border-sage-700 bg-sage-700 text-off-white"
-                          : "border-charcoal/10 bg-off-white/82 text-charcoal hover:bg-off-white",
+                          ? "border-sage-800 bg-sage-800 text-off-white"
+                          : "border-charcoal/14 bg-off-white/94 text-charcoal hover:bg-off-white",
                       )}
                       key={value}
                     >
                       <input
+                        aria-label={`${value} star${value === 1 ? "" : "s"}`}
                         checked={rating === value}
                         className="sr-only"
                         name="testimonial-rating"
@@ -345,21 +404,25 @@ export function HomeTestimonialsSection() {
                       />
                       <span className="flex items-center gap-2">
                         <StarIcon filled={active} />
-                        <span className="text-sm font-medium">{value}</span>
+                        <span className="text-sm font-semibold">{value}</span>
                       </span>
                     </label>
                   );
                 })}
               </div>
-              <p aria-live="polite" className="mt-3 text-sm text-charcoal/58">
+              <p aria-live="polite" className="mt-3 text-sm text-charcoal/76" id={ratingStatusId}>
                 {rating > 0 ? `${rating} out of 5 stars selected` : "Choose a star rating to continue"}
               </p>
             </fieldset>
 
             <label className="mt-6 block">
-              <span className="text-sm font-medium text-charcoal">Comment</span>
+              <span className="text-sm font-medium text-charcoal">
+                Comment <span aria-hidden="true" className="text-sage-800">*</span>
+                <span className="sr-only"> required</span>
+              </span>
               <textarea
-                className="mt-2 min-h-36 w-full rounded-[1.5rem] border border-charcoal/10 bg-off-white/82 px-4 py-3 text-sm leading-7 text-charcoal outline-none transition focus:border-sage-700 focus:ring-2 focus:ring-sage-700/20"
+                aria-describedby={`${formRequirementsId} ${submissionNoteId}`}
+                className={`${fieldClasses} min-h-36 rounded-[1.5rem] leading-7`}
                 maxLength={600}
                 onChange={(event) => setComment(event.target.value)}
                 placeholder="Share a calm, honest note about your treatment experience."
@@ -368,8 +431,8 @@ export function HomeTestimonialsSection() {
               />
             </label>
 
-            <div className="mt-6 rounded-[1.5rem] border border-charcoal/8 bg-off-white/74 p-4">
-              <p aria-live="polite" className="text-sm leading-7 text-charcoal/68">
+            <div className="mt-6 rounded-[1.5rem] border border-charcoal/10 bg-off-white/82 p-4">
+              <p aria-live="polite" className="text-sm leading-7 text-charcoal/80" id={formStatusId}>
                 {isReady
                   ? testimonialConfig.formReadyHint
                   : `${testimonialConfig.formPendingHint} ${pendingFieldsMessage}`.trim()}
@@ -379,7 +442,8 @@ export function HomeTestimonialsSection() {
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <ButtonLink
                 analytics={contactIntent("home_testimonials", "whatsapp", "send_website_testimonial_on_whatsapp")}
-                className="w-full border-sage-700/12 bg-sage-50 text-charcoal hover:bg-sage-100 sm:w-auto"
+                ariaDescribedBy={`${submissionNoteId} ${actionsHelperId}`}
+                className="w-full border-sage-700/18 bg-sage-50 text-charcoal hover:bg-sage-100 focus-visible:ring-sage-700/45 sm:w-auto"
                 disabled={!isReady}
                 href={whatsappSubmissionHref}
                 variant="secondary"
@@ -387,7 +451,8 @@ export function HomeTestimonialsSection() {
                 {testimonialConfig.whatsappCtaLabel}
               </ButtonLink>
               <ButtonLink
-                className="w-full border-charcoal/8 bg-white/86 text-charcoal hover:bg-off-white sm:w-auto"
+                ariaDescribedBy={`${submissionNoteId} ${actionsHelperId}`}
+                className="w-full border-charcoal/12 bg-white/92 text-charcoal hover:bg-off-white focus-visible:ring-sage-700/45 sm:w-auto"
                 disabled={!isReady}
                 href={emailSubmissionHref}
                 variant="secondary"
@@ -395,7 +460,9 @@ export function HomeTestimonialsSection() {
                 {testimonialConfig.emailCtaLabel}
               </ButtonLink>
             </div>
-            <p className="mt-4 text-sm leading-7 text-charcoal/58">{testimonialConfig.actionsHelper}</p>
+            <p className="mt-4 text-sm leading-7 text-charcoal/76" id={actionsHelperId}>
+              {testimonialConfig.actionsHelper}
+            </p>
           </article>
         </div>
       </Container>
