@@ -221,35 +221,43 @@ export const siteConfig = {
         "That house-call model makes wellness feel more personal. Each appointment is shaped around your comfort, preferred pressure, and treatment goals, with a warm, respectful approach that keeps the experience both premium and approachable.",
     },
     testimonials: {
-      eyebrow: "Testimonials",
-      title: "Approved client feedback and a clear way to share your experience",
+      eyebrow: "Reviews and testimonials",
+      title: "Leave a public Google review or send a testimonial for possible website feature",
       description:
-        "This section is designed for approved testimonials only. If you would like to share your experience after an appointment, you can send it directly to Mia Wellness Spa for review below.",
-      publishedEyebrow: "What Clients Are Saying",
-      publishedTitle: "Approved testimonials are shown here once clients choose to share them publicly",
+        "There are two different feedback paths here. Public Google reviews appear on Google, while website testimonials are reviewed by Mia Wellness Spa before they may be featured on this site.",
+      publicReviewEyebrow: "Public Google reviews",
+      publicReviewTitle: "Leave a public Google review",
+      publicReviewDescription:
+        "Use this option if you would like to leave a public review that future clients can read on Google before they book.",
+      publicReviewNote:
+        "This action opens the live Google review page in a new tab. It is separate from the website testimonial form.",
+      publicReviewUnavailableNote:
+        "The public Google review link will appear here once it is ready. Until then, approved website testimonials can still be reviewed and featured on this site.",
+      publishedEyebrow: "Approved website testimonials",
+      publishedTitle: "Featured client feedback shown on the website after review",
       publishedDescription:
-        "Nothing in this area is auto-published. Testimonials appear only after review and client approval, keeping the site polished and truthful.",
-      publishedEmptyTitle: "Approved client testimonials will appear here once they are ready to publish",
+        "These are curated website testimonials only. They are not a live public review feed, and nothing is auto-published from the form.",
+      publishedEmptyTitle: "Approved website testimonials will appear here once clients choose to be featured",
       publishedEmptyDescription:
         "The testimonial layout is ready, but Mia Wellness Spa does not publish sample names, placeholder stars, or invented quotes just to make the page look busy.",
       publishedEmptyNote:
         "When real testimonials are approved, they will appear here with the client's name, star rating, and message in the same calm, premium presentation.",
-      submissionEyebrow: "Share Your Experience",
-      submissionTitle: "Send your experience for review after your appointment",
+      submissionEyebrow: "Optional website feature submission",
+      submissionTitle: "Share your experience for website feature consideration",
       submissionDescription:
-        "Enter your first and last name, choose a star rating, and add a short comment. The form prepares a real testimonial submission that you can send directly on WhatsApp or by email.",
+        "Use this form only if you would like Mia Wellness Spa to review your feedback for possible feature on this website. This is not the public Google review flow.",
       submissionNote:
-        "Submissions are reviewed before anything appears publicly on the website. The site does not use a database-backed public review system at the moment.",
+        "This form sends your feedback to Mia Wellness Spa for review before it may be featured on the website. To leave a public review on Google, use the Google review button in the public review panel.",
       formReadyHint:
-        "Your testimonial submission is ready to send. Choose WhatsApp for a quick mobile-friendly handoff or email if you prefer a written record.",
+        "Your website feature submission is ready to send. Choose WhatsApp for a quick mobile-friendly handoff or email if you prefer a written record.",
       formPendingHint:
-        "Complete your first name, last name, star rating, and comment to unlock the submission actions.",
+        "Complete your first name, last name, star rating, and comment to prepare your website feature submission.",
       ratingPrompt: "Rate your experience",
-      whatsappCtaLabel: "Send on WhatsApp",
-      emailCtaLabel: "Send by email",
+      whatsappCtaLabel: "Send Website Feature on WhatsApp",
+      emailCtaLabel: "Send Website Feature by Email",
       actionsHelper:
-        "These actions open WhatsApp or email with your testimonial already prepared, ready for Mia Wellness Spa to review before featuring it publicly.",
-      googleReviewCtaLabel: "Read or Leave Reviews on Google",
+        "These actions open WhatsApp or email with your website testimonial already prepared for review. Nothing is posted publicly from this form.",
+      googleReviewCtaLabel: "Leave a Public Google Review",
       published: [] as ApprovedTestimonial[],
     },
     finalCta: {
