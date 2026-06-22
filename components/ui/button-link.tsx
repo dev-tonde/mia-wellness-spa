@@ -14,14 +14,16 @@ type ButtonLinkProps = {
   disabled?: boolean;
   href: string;
   id?: string;
-  variant?: "ghost" | "primary" | "secondary";
+  variant?: "ghost" | "lightPrimary" | "primary" | "secondary";
 };
 
 const variants = {
   primary:
-    "bg-charcoal text-off-white shadow-soft hover:-translate-y-0.5 hover:bg-charcoal/95",
+    "bg-charcoal text-off-white shadow-soft hover:-translate-y-0.5 hover:bg-charcoal/95 active:translate-y-0 active:bg-charcoal",
+  lightPrimary:
+    "border border-white/24 bg-off-white text-charcoal shadow-soft hover:-translate-y-0.5 hover:bg-off-white/92 active:translate-y-0 active:bg-off-white/88",
   secondary:
-    "border border-sage-900/18 bg-off-white/82 text-charcoal backdrop-blur hover:-translate-y-0.5 hover:bg-off-white",
+    "border border-sage-900/18 bg-off-white/82 text-charcoal backdrop-blur hover:-translate-y-0.5 hover:bg-off-white active:translate-y-0 active:bg-off-white/96",
   ghost: "text-charcoal hover:bg-charcoal/5",
 };
 
@@ -37,7 +39,10 @@ export function ButtonLink({
   variant = "primary",
 }: ButtonLinkProps) {
   const classes = cn(
-    "inline-flex min-h-11 items-center justify-center rounded-full px-5 py-3.5 text-sm font-medium transition duration-300 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sage-700/50 focus-visible:ring-offset-4 focus-visible:ring-offset-background",
+    "inline-flex min-h-11 items-center justify-center rounded-full px-5 py-3.5 text-sm font-medium transition duration-300 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-offset-4",
+    variant === "lightPrimary"
+      ? "focus-visible:ring-off-white focus-visible:ring-offset-charcoal"
+      : "focus-visible:ring-sage-700/50 focus-visible:ring-offset-background",
     variants[variant],
     disabled && "cursor-not-allowed opacity-80",
     className,

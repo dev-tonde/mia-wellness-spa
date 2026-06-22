@@ -213,9 +213,10 @@ export function HomeTestimonialsSection() {
                   <div className="mt-7">
                     <ButtonLink
                       ariaDescribedBy={publicReviewNoteId}
-                      className="w-full bg-off-white px-7 py-4 text-base font-semibold text-charcoal hover:bg-off-white/92 focus-visible:ring-off-white focus-visible:ring-offset-charcoal sm:w-auto"
+                      ariaLabel={testimonialConfig.googleReviewCtaLabel}
+                      className="w-full px-7 py-4 text-base font-semibold sm:w-auto"
                       href={siteConfig.links.googleReviewsPage}
-                      variant="primary"
+                      variant="lightPrimary"
                     >
                       {testimonialConfig.googleReviewCtaLabel}
                     </ButtonLink>
